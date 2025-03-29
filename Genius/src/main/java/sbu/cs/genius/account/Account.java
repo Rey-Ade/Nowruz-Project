@@ -36,4 +36,8 @@ public abstract class Account {
         Matcher matcher = pattern.matcher(email);
         return matcher.find();
     }
+
+    public String getUsername() {
+        return username;
+    }
 }

@@ -2,7 +2,7 @@ package sbu.cs.genius.account;
 
 public class User extends Account{
 
-    private static User user;
+    private static User user = null;
 
     public User(String name, String username, String email, String password, int age) {
         super(name, username, email, password, age);
