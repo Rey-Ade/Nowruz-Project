@@ -20,9 +20,20 @@ public abstract class Account {
     }
 
     public static boolean validPassword(String password) {
-        Pattern pattern = Pattern.compile("(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}");
+        Pattern pattern = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
         Matcher matcher = pattern.matcher(password);
         return matcher.find();
     }
 
+    public static boolean validUsername(String username) {
+        Pattern pattern = Pattern.compile("^\\S{5,8}$");
+        Matcher matcher = pattern.matcher(username);
+        return matcher.find();
+    }
+
+    public static boolean validEmail(String email) {
+        Pattern pattern = Pattern.compile("^\\S+@[^-][^_]+\\.\\w+");
+        Matcher matcher = pattern.matcher(email);
+        return matcher.find();
+    }
 }

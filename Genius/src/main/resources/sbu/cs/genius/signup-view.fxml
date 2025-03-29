@@ -27,7 +27,7 @@
       <Label fx:id="ageMessage" alignment="CENTER" layoutX="258.0" layoutY="194.0" prefHeight="18.0" prefWidth="150.0" />
       <TextField fx:id="usernameTextField" layoutX="40.0" layoutY="254.0" />
       <Label alignment="CENTER" layoutX="88.0" layoutY="236.0" text="Username" />
-      <Label fx:id="usernameAlert" alignment="CENTER" layoutX="39.0" layoutY="279.0" opacity="0.5" prefHeight="18.0" prefWidth="150.0" text="5+ characters without space" />
+      <Label fx:id="usernameAlert" alignment="CENTER" layoutX="28.0" layoutY="279.0" opacity="0.5" prefHeight="18.0" prefWidth="174.0" text="5 to 8 characters without space" />
       <TextField fx:id="emailTextField" layoutX="258.0" layoutY="252.0" />
       <Label alignment="CENTER" layoutX="319.0" layoutY="235.0" text="Email" />
       <Label fx:id="emailMessage" alignment="CENTER" layoutX="257.0" layoutY="279.0" prefHeight="18.0" prefWidth="150.0" />
@@ -52,7 +52,7 @@
          </font>
       </Button>
       <Label fx:id="passwordMessage" alignment="CENTER" layoutX="437.0" layoutY="297.0" opacity="0.0" prefHeight="18.0" prefWidth="190.0" text="8+ characters including a number" />
-      <Label fx:id="usernameMessage" alignment="CENTER" layoutX="40.0" layoutY="297.0" opacity="0.0" prefHeight="18.0" prefWidth="150.0" text="5+ characters without space" />
+      <Label fx:id="usernameMessage" alignment="CENTER" layoutX="28.0" layoutY="297.0" opacity="0.0" prefHeight="18.0" prefWidth="174.0" text="5 to 8 characters without space" />
       <Label fx:id="roleMessage" alignment="CENTER" layoutX="457.0" layoutY="194.0" prefHeight="18.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
