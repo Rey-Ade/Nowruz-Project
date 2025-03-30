@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public class Album {
 
+    // all the albums in this program are in this ArrayList
+    private static ArrayList<Album> allAlbums = new ArrayList<>();
+
     private String title;
     // in the form of ex. November 14, 1995
     private String releaseDate;
@@ -46,7 +49,15 @@ public class Album {
         return tracklist;
     }
 
-    public void addSong(Song song) {
+    public void addSongToAlbum(Song song) {
         tracklist.add(song);
+    }
+
+    public static ArrayList<Album> getAllAlbums() {
+        return allAlbums;
+    }
+
+    public static void addAlbumToAllAlbums(Album album) {
+        allAlbums.add(album);
     }
 }

@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public class Song {
 
+    // all the songs in this program are in this ArrayList
+    private static ArrayList<Song> allSongs = new ArrayList<>();
+
     private String title;
     // in the form of ex. November 14, 1995
     private String releaseDate;
@@ -26,7 +29,6 @@ public class Song {
         this.albumTitle =  albumTitle;
         this.lyric = lyric;
         this.genre = genre;
-
     }
 
     public void editLyric(String newLyric) {
@@ -47,5 +49,13 @@ public class Song {
 
     public void addComment(String comment) {
         this.comment.add(comment);
+    }
+
+    public static ArrayList<Song> getAllSongs() {
+        return allSongs;
+    }
+
+    public static void addSongToAllSongs(Song song) {
+        allSongs.add(song);
     }
 }
