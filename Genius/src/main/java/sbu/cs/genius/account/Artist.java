@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Artist extends Account{
 
     private static Artist artist = null;
+    private static ArrayList<Artist> artists = new ArrayList<>();
 
     private String info;
     private ArrayList<Album> albumsByArtist;
@@ -57,5 +58,13 @@ public class Artist extends Account{
 
     public void editLyric(Song song, String lyric) {
         song.editLyric(lyric);
+    }
+
+    public static ArrayList<Artist> getArtists() {
+        return artists;
+    }
+
+    public static void addArtistToArtists(Artist artist) {
+        Artist.artists.add(artist);
     }
 }
