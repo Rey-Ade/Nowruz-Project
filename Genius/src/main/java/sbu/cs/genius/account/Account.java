@@ -40,4 +40,8 @@ public abstract class Account {
     public String getUsername() {
         return username;
     }
+
+    public String getName() {
+        return name;
+    }
 }
