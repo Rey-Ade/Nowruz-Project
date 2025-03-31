@@ -13,7 +13,7 @@ public class Album {
     // in the form of ex. November 14, 1995
     private String releaseDate;
     private Artist artist;
-    private ArrayList<Song> tracklist;
+    private ArrayList<Song> tracklist = new ArrayList<>();
 
     public Album(String title, String releaseDate, Artist artist) {
         this.title = title;

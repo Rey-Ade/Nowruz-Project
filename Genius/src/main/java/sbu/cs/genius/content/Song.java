@@ -58,4 +58,9 @@ public class Song {
     public static void addSongToAllSongs(Song song) {
         allSongs.add(song);
     }
+
+    @Override
+    public String toString() {
+        return title + "            " + artist.getName() + "          " + viewsCount;
+    }
 }
