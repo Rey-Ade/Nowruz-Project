@@ -44,4 +44,12 @@ public abstract class Account {
     public String getName() {
         return name;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
