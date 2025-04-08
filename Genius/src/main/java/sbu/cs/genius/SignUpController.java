@@ -17,6 +17,7 @@ import sbu.cs.genius.account.User;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
@@ -31,15 +32,14 @@ public class SignUpController implements Initializable {
     private ChoiceBox<String> choiceBox;
 
     private final String[] role = {"User", "Artist"};
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBox.getItems().addAll(role);
+        System.out.println("-> signup-view is initialized");
     }
 
+    @FXML
     public void signUp(ActionEvent event) throws IOException {
         // check if age is entered in number form
         try {
@@ -101,19 +101,24 @@ public class SignUpController implements Initializable {
         if (choiceBox.getValue().compareTo("User") == 0) {
             User.setUser(new User(nameTextField.getText(), usernameTextField.getText(), emailTextField.getText(),
                          passwordTextField.getText(), Integer.parseInt(ageTextField.getText())));
+            System.out.println("-> User is created");
         }
         // if "Artist" is chosen
-        else if (choiceBox.getValue().compareTo("Artist") == 0) {
+        else {
             Artist.setArtist(new Artist(nameTextField.getText(), usernameTextField.getText(), emailTextField.getText(),
                              passwordTextField.getText(), Integer.parseInt(ageTextField.getText())));
+            System.out.println("-> Artist is created");
+            Artist.addArtistToArtists(Artist.getArtist());
+            System.out.println("-> Artist is added to Artists arraylist");
         }
 
         // switch to home view
-        root = FXMLLoader.load(getClass().getResource("/sbu/cs/genius/home-view.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/sbu/cs/genius/home-view.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        System.out.println("-> switched to home scene");
     }
 }

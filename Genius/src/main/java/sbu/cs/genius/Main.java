@@ -73,6 +73,7 @@ public class Main extends Application {
         Song.addSongToAllSongs(fracturedReality2);
         Song.addSongToAllSongs(fracturedReality3);
         Song.addSongToAllSongs(fracturedReality4);
+        System.out.println("-> initial data is entered");
         launch();
     }
 }
