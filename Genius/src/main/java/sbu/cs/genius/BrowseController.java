@@ -1,7 +1,6 @@
 package sbu.cs.genius;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,17 +8,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sbu.cs.genius.account.Artist;
 import sbu.cs.genius.content.Album;
 import sbu.cs.genius.content.Song;
-
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class SearchController {
+public class BrowseController {
 
     @FXML
     private TextField searchTextField;
@@ -27,8 +25,11 @@ public class SearchController {
     @FXML
     private ListView<String> searchListView;
 
+    private Object selectedItem;
+
     @FXML
-    public void search() {
+    public void search(ActionEvent e) throws IOException {
+        searchListView.getItems().clear();
         String term = searchTextField.getText();
         ArrayList<Object> searchResults = new ArrayList<>();
         // search through artists
@@ -47,32 +48,37 @@ public class SearchController {
             }
         }
         // search through songs
-        System.out.println("Songs:");
-        int i = 1;
         for (Song song : Song.getAllSongs()) {
-            System.out.println(i + ". " + song.getTitle().toLowerCase());
-            i++;
             if (song.getTitle().toLowerCase().contains(term.toLowerCase())) {
                 searchResults.add(song);
                 searchListView.getItems().add(song.toString());
-                //System.out.println("found " + song.toString());
             }
         }
+        System.out.println("-> search ListView is populated");
 
-        searchListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+        searchListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+            public void handle(MouseEvent event) {
                 int index = searchListView.getSelectionModel().getSelectedIndex();
+                selectedItem = searchResults.get(index);
+                System.out.println("clicked on " + searchListView.getSelectionModel().getSelectedItem());
+                // load Artist controller
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sbu/cs/genius/artist-view.fxml"));
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                ArtistController artistController = loader.getController();
+                artistController.getItem(selectedItem);
                 // switch scenes
-                if (searchResults.get(index) instanceof Artist) {
-
-                }
-                else if (searchResults.get(index) instanceof Album) {
-
-                }
-                else {
-
-                }
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+                System.out.println("-> switch to artist scene");
             }
         });
     }
@@ -87,6 +93,7 @@ public class SearchController {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        System.out.println("-> switch to home scene");
     }
 
 }

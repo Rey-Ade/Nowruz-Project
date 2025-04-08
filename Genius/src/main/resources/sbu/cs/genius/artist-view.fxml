@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.cs.genius.ArtistController">
+   <children>
+      <Label fx:id="heading" alignment="CENTER" layoutY="51.0" prefHeight="27.0" prefWidth="239.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="subheading" alignment="CENTER" layoutY="83.0" opacity="0.5" prefHeight="20.0" prefWidth="239.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label1" layoutX="12.0" layoutY="138.0" prefHeight="20.0" prefWidth="100.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="content1" alignment="CENTER" layoutX="120.0" layoutY="138.0" prefHeight="20.0" prefWidth="120.0" text="Label" />
+      <Label fx:id="label2" layoutX="12.0" layoutY="186.0" prefHeight="20.0" prefWidth="100.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="content2" alignment="CENTER" layoutX="120.0" layoutY="186.0" prefHeight="20.0" prefWidth="120.0" text="Label" />
+      <Separator layoutX="238.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="0.0" />
+      <ListView fx:id="listView" layoutX="283.0" layoutY="110.0" prefHeight="447.0" prefWidth="370.0" />
+      <Label fx:id="title" alignment="CENTER" layoutX="283.0" layoutY="44.0" prefHeight="42.0" prefWidth="370.0" text="Title">
+         <font>
+            <Font name="Arial Italic" size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="label3" layoutX="12.0" layoutY="227.0" prefHeight="20.0" prefWidth="100.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="content3" alignment="CENTER" layoutX="120.0" layoutY="227.0" prefHeight="20.0" prefWidth="120.0" text="Label" />
+      <Label fx:id="label4" layoutX="12.0" layoutY="269.0" prefWidth="100.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="content4" alignment="CENTER" layoutX="120.0" layoutY="269.0" prefHeight="20.0" prefWidth="120.0" text="Label" />
+      <Label fx:id="label5" layoutX="12.0" layoutY="307.0" prefWidth="100.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="content5" alignment="CENTER" layoutX="120.0" layoutY="307.0" prefHeight="20.0" prefWidth="120.0" text="Label" />
+   </children>
 </AnchorPane>
