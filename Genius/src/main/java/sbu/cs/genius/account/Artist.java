@@ -11,8 +11,8 @@ public class Artist extends Account{
     private static ArrayList<Artist> artists = new ArrayList<>();
 
     private String info;
-    private ArrayList<Album> albumsByArtist;
-    private ArrayList<Song> songsByArtist;
+    private ArrayList<Album> albumsByArtist = new ArrayList<>();
+    private ArrayList<Song> songsByArtist = new ArrayList<>();
 
     public Artist (String name, String username, String email, String password, int age) {
         super(name, username, email, password, age);
@@ -34,7 +34,7 @@ public class Artist extends Account{
         this.info = info;
     }
 
-    public ArrayList<Album> getAlbums() {
+    public ArrayList<Album> getAlbumsByArtist() {
         return albumsByArtist;
     }
 
@@ -66,5 +66,10 @@ public class Artist extends Account{
 
     public static void addArtistToArtists(Artist artist) {
         Artist.artists.add(artist);
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

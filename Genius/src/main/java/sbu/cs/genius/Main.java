@@ -34,11 +34,11 @@ public class Main extends Application {
         starlightChronicles.addSongToAlbum(starlightChronicles2);
         starlightChronicles.addSongToAlbum(starlightChronicles3);
         starlightChronicles.addSongToAlbum(starlightChronicles4);
-        Album.addAlbumToAllAlbums(starlightChronicles);
-        Song.addSongToAllSongs(starlightChronicles1);
-        Song.addSongToAllSongs(starlightChronicles2);
-        Song.addSongToAllSongs(starlightChronicles3);
-        Song.addSongToAllSongs(starlightChronicles4);
+        EchoSeraph.newAlbum(starlightChronicles);
+        EchoSeraph.newSong(starlightChronicles1);
+        EchoSeraph.newSong(starlightChronicles2);
+        EchoSeraph.newSong(starlightChronicles3);
+        EchoSeraph.newSong(starlightChronicles4);
 
         Artist CairoNova = new Artist("Cairo Nova", "Cairo_Nova", "caironova@gmail.com", "cairo2011", 21);
         Artist.addArtistToArtists(CairoNova);
@@ -51,11 +51,11 @@ public class Main extends Application {
         theGardenOfBrokenTime.addSongToAlbum(theGardenOfBrokenTime2);
         theGardenOfBrokenTime.addSongToAlbum(theGardenOfBrokenTime3);
         theGardenOfBrokenTime.addSongToAlbum(theGardenOfBrokenTime4);
-        Album.addAlbumToAllAlbums(theGardenOfBrokenTime);
-        Song.addSongToAllSongs(theGardenOfBrokenTime1);
-        Song.addSongToAllSongs(theGardenOfBrokenTime2);
-        Song.addSongToAllSongs(theGardenOfBrokenTime3);
-        Song.addSongToAllSongs(theGardenOfBrokenTime4);
+        CairoNova.newAlbum(theGardenOfBrokenTime);
+        CairoNova.newSong(theGardenOfBrokenTime1);
+        CairoNova.newSong(theGardenOfBrokenTime2);
+        CairoNova.newSong(theGardenOfBrokenTime3);
+        CairoNova.newSong(theGardenOfBrokenTime4);
 
         Artist NeonDrifters = new Artist("Neon Drifters", "Neon_Drifters", "neondrifters@gmail.com", "drifters2019", 35);
         Artist.addArtistToArtists(NeonDrifters);
@@ -68,11 +68,11 @@ public class Main extends Application {
         fracturedReality.addSongToAlbum(fracturedReality2);
         fracturedReality.addSongToAlbum(fracturedReality3);
         fracturedReality.addSongToAlbum(fracturedReality4);
-        Album.addAlbumToAllAlbums(fracturedReality);
-        Song.addSongToAllSongs(fracturedReality1);
-        Song.addSongToAllSongs(fracturedReality2);
-        Song.addSongToAllSongs(fracturedReality3);
-        Song.addSongToAllSongs(fracturedReality4);
+        NeonDrifters.newAlbum(fracturedReality);
+        NeonDrifters.newSong(fracturedReality1);
+        NeonDrifters.newSong(fracturedReality2);
+        NeonDrifters.newSong(fracturedReality3);
+        NeonDrifters.newSong(fracturedReality4);
         System.out.println("-> initial data is entered");
         launch();
     }

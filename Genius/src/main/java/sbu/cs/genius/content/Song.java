@@ -7,13 +7,13 @@ import java.util.ArrayList;
 public class Song {
 
     // all the songs in this program are in this ArrayList
-    private static ArrayList<Song> allSongs = new ArrayList<>();
+    private static final ArrayList<Song> allSongs = new ArrayList<>();
 
     private String title;
     // in the form of ex. November 14, 1995
     private String releaseDate;
     private Artist artist;
-    private Artist coArtist;
+    private Artist coArtist = null;
     private String albumTitle;
     private String lyric;
     private String genre;
@@ -62,5 +62,37 @@ public class Song {
     @Override
     public String toString() {
         return title + "            " + artist.getName() + "          " + viewsCount;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public Artist getCoArtist() {
+        return coArtist;
+    }
+
+    public String getAlbumTitle() {
+        return albumTitle;
+    }
+
+    public String getLyric() {
+        return lyric;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public ArrayList<String> getTag() {
+        return tag;
     }
 }

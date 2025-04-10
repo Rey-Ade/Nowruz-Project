@@ -60,4 +60,9 @@ public class Album {
     public static void addAlbumToAllAlbums(Album album) {
         allAlbums.add(album);
     }
+
+    @Override
+    public String toString() {
+        return title + "  " + releaseDate;
+    }
 }
