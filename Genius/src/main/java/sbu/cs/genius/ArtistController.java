@@ -33,26 +33,29 @@ public class ArtistController {
             recordsListView.getItems().add(album.toString());
         }
         System.out.println("-> artist scene is set");
+
         recordsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                int index = recordsListView.getSelectionModel().getSelectedIndex();
                 // load Album controller
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sbu/cs/genius/artist-view.fxml"));
-//                Parent root = null;
-//                try {
-//                    root = loader.load();
-//                } catch (IOException ex) {
-//                    throw new RuntimeException(ex);
-//                }
-//                ArtistController artistController = loader.getController();
-//                artistController.setScene((Artist) (searchResults.get(index)));
-//                // switch scenes
-//                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-//                Scene scene = new Scene(root);
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//                System.out.println("-> switch to artist scene");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sbu/cs/genius/album-view.fxml"));
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                AlbumController albumController = loader.getController();
+                albumController.setScene(artist.getAlbumsByArtist().get(index), "/sbu/cs/genius/artist-view.fxml");
+                // switch scenes
+                ActionEvent event = new ActionEvent();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+                System.out.println("-> switched to album scene");
             }
         });
     }

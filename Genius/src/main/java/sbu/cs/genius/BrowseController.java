@@ -25,8 +25,6 @@ public class BrowseController {
     @FXML
     private ListView<String> searchListView;
 
-    private Object selectedItem;
-
     @FXML
     public void search(ActionEvent e) throws IOException {
         searchListView.getItems().clear();
@@ -60,25 +58,29 @@ public class BrowseController {
             @Override
             public void handle(MouseEvent event) {
                 int index = searchListView.getSelectionModel().getSelectedIndex();
-                selectedItem = searchResults.get(index);
-                System.out.println("clicked on " + searchListView.getSelectionModel().getSelectedItem());
-                // load Artist controller
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/sbu/cs/genius/artist-view.fxml"));
-                Parent root = null;
-                try {
-                    root = loader.load();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                System.out.println("-> selected " + searchListView.getSelectionModel().getSelectedItem());
+                if (searchResults.get(index) instanceof Artist) {
+                    // load Artist controller
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sbu/cs/genius/artist-view.fxml"));
+                    Parent root = null;
+                    try {
+                        root = loader.load();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    ArtistController artistController = loader.getController();
+                    artistController.setScene((Artist) (searchResults.get(index)));
+                    // switch scenes
+                    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.show();
+                    System.out.println("-> switched to artist scene");
                 }
-                ArtistController artistController = loader.getController();
-                artistController.getItem(selectedItem);
-                // switch scenes
-                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-                System.out.println("-> switch to artist scene");
+                else {
+                    System.out.println("-> failed");
+                }
             }
         });
     }
@@ -93,7 +95,7 @@ public class BrowseController {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        System.out.println("-> switch to home scene");
+        System.out.println("-> switched to home scene");
     }
 
 }

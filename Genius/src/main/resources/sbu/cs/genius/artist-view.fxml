@@ -19,13 +19,13 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="140.0" prefHeight="20.0" prefWidth="50.0" text="Age">
+      <Label layoutX="25.0" layoutY="140.0" prefHeight="20.0" prefWidth="50.0" text="Age">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <Label fx:id="artistAge" layoutX="110.0" layoutY="140.0" prefHeight="20.0" prefWidth="150.0" text="Label" />
-      <Label layoutX="30.0" layoutY="185.0" prefHeight="20.0" prefWidth="50.0" text="Email">
+      <Label layoutX="25.0" layoutY="185.0" prefHeight="20.0" prefWidth="50.0" text="Email">
          <font>
             <Font size="14.0" />
          </font>
