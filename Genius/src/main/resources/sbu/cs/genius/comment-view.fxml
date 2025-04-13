@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="110.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="110.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.cs.genius.CommentController">
    <children>
-      <TextArea layoutX="34.0" layoutY="15.0" prefHeight="80.0" prefWidth="370.0" promptText="Type your comment" />
-      <Button layoutX="420.0" layoutY="40.0" mnemonicParsing="false" text="Send">
+      <TextArea fx:id="commentTextArea" layoutX="34.0" layoutY="15.0" prefHeight="80.0" prefWidth="370.0" promptText="Type your comment" />
+      <Button fx:id="send" layoutX="420.0" layoutY="40.0" mnemonicParsing="false" text="Send">
          <font>
             <Font size="14.0" />
          </font>

@@ -18,7 +18,7 @@ public class Song {
     private String lyric;
     private String genre;
     private ArrayList<String> tag;
-    private ArrayList<String> comment;
+    private ArrayList<Comment> comments = new ArrayList<>();
     private int viewsCount = 0;
 
     public Song(String title, String releaseDate, Artist artist, Artist coArtist, String albumTitle, String lyric, String genre) {
@@ -43,12 +43,12 @@ public class Song {
         viewsCount++;
     }
 
-    public ArrayList<String> getComment() {
-        return comment;
+    public ArrayList<Comment> getComments() {
+        return comments;
     }
 
-    public void addComment(String comment) {
-        this.comment.add(comment);
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
     }
 
     public static ArrayList<Song> getAllSongs() {
