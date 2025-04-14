@@ -26,7 +26,7 @@ public class AlbumController {
 
     private String path = "";
 
-    public void setScene(Album album, String path) {
+    public void setScene(Album album, String path, ActionEvent event) {
         this.path = path;
         albumTitle.setText(album.getTitle());
         albumArtist.setText(album.getArtist().toString());
