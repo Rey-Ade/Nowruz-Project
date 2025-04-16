@@ -9,12 +9,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.cs.genius.AlbumController">
    <children>
-      <Label fx:id="albumTitle" alignment="CENTER" layoutY="51.0" prefHeight="27.0" prefWidth="270.0" text="Label">
+      <Label fx:id="albumTitle" alignment="CENTER" layoutY="51.0" prefHeight="27.0" prefWidth="250.0" text="Title">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="albumArtist" alignment="CENTER" layoutY="83.0" opacity="0.5" prefHeight="20.0" prefWidth="270.0" text="Label">
+      <Label fx:id="albumArtist" alignment="CENTER" layoutY="83.0" opacity="0.5" prefHeight="20.0" prefWidth="250.0" text="Artist">
          <font>
             <Font size="14.0" />
          </font>
@@ -24,10 +24,10 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="albumReleaseDate" layoutX="119.0" layoutY="140.0" prefHeight="20.0" prefWidth="150.0" text="Label" />
-      <Separator layoutX="270.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="0.0" />
-      <ListView fx:id="trackListView" fixedCellSize="50.0" layoutX="326.0" layoutY="140.0" prefHeight="410.0" prefWidth="418.0" />
-      <Label alignment="CENTER" layoutX="335.0" layoutY="72.0" prefHeight="42.0" prefWidth="400.0" text="Track List">
+      <Label fx:id="albumReleaseDate" layoutX="125.0" layoutY="140.0" prefHeight="20.0" prefWidth="125.0" text="Label" />
+      <Separator layoutX="250.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="0.0" />
+      <ListView fx:id="trackListView" fixedCellSize="50.0" layoutX="316.0" layoutY="140.0" prefHeight="410.0" prefWidth="418.0" />
+      <Label alignment="CENTER" layoutX="325.0" layoutY="72.0" prefHeight="42.0" prefWidth="400.0" text="Track List">
          <font>
             <Font name="Arial Italic" size="35.0" />
          </font>
