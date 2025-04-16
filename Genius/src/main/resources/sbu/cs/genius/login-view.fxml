@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.cs.genius.LoginController">
+   <children>
+      <ImageView fitHeight="90.0" fitWidth="280.0" layoutX="135.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pics/genius_logo.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="163.0" layoutY="93.0" prefHeight="36.0" prefWidth="223.0" text="Welcome to Genius">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="242.0" layoutY="155.0" text="Username">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="usernameTextField" layoutX="199.0" layoutY="181.0" />
+      <Label fx:id="ageMessage" alignment="CENTER" layoutX="258.0" layoutY="194.0" prefHeight="18.0" prefWidth="150.0" />
+      <Label fx:id="usernameAlert" alignment="CENTER" layoutX="186.0" layoutY="210.0" prefHeight="18.0" prefWidth="174.0" style="-fx-text-fill: red;" text="Username not found" visible="false" />
+      <TextField fx:id="passwordTextField" layoutX="199.0" layoutY="273.0" />
+      <Label alignment="CENTER" layoutX="244.0" layoutY="247.0" text="Password">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button layoutX="238.0" layoutY="351.0" mnemonicParsing="false" onAction="#login" prefHeight="31.0" prefWidth="73.0" text="Login">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="passwordAlert" alignment="CENTER" layoutX="186.0" layoutY="303.0" prefHeight="18.0" prefWidth="174.0" style="-fx-text-fill: red;" text="Incorrect password" visible="false" />
+      <Label fx:id="roleMessage" alignment="CENTER" layoutX="457.0" layoutY="194.0" prefHeight="18.0" prefWidth="150.0" />
+   </children>
 </AnchorPane>
