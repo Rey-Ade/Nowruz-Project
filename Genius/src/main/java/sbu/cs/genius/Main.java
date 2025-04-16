@@ -4,8 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sbu.cs.genius.account.Account;
 import sbu.cs.genius.account.Artist;
 import sbu.cs.genius.content.Album;
+import sbu.cs.genius.content.Comment;
 import sbu.cs.genius.content.Song;
 
 import java.io.IOException;
@@ -24,11 +26,12 @@ public class Main extends Application {
     public static void main(String[] args) {
         // initial data
         Artist EchoSeraph = new Artist("Echo Seraph", "Echo_Seraph", "echoseraph@gmail.com", "echo1993", 25);
+        Account.allAccounts.add(EchoSeraph);
+        Artist.addArtistToArtists(EchoSeraph);
         EchoSeraph.setInfo("Hi I'm Echo Seraph\n" +
                 "Spreading good vibes");
-        Artist.addArtistToArtists(EchoSeraph);
         Album starlightChronicles = new Album("Starlight Chronicles", "May 17, 1993", EchoSeraph);
-        Song starlightChronicles1 = new Song("Whispers in the Nebula", "May 17, 1993", EchoSeraph, null, "Starlight Chronicles", "" , "Pop");
+        Song starlightChronicles1 = new Song("Whispers in the Nebula", "May 17, 1993", EchoSeraph, null, "Starlight Chronicles", "[enter lyric here]" , "Pop");
         Song starlightChronicles2 = new Song("Crimson Sky", "May 17, 1993", EchoSeraph, null, "Starlight Chronicles", "[enter lyric here]" , "Pop");
         Song starlightChronicles3 = new Song("Electric Stardust", "May 17, 1993", EchoSeraph, null, "Starlight Chronicles", "[enter lyric here]", "Pop");
         Song starlightChronicles4 = new Song("Fading Echoes", "May 17, 1993", EchoSeraph, null, "Starlight Chronicles", "(Verse 1)\n" +
@@ -79,20 +82,18 @@ public class Main extends Application {
                 "Oh-oh, fading echoes…\n" +
                 "Just fading echoes…\n" +
                 "In the dark", "Pop");
+        starlightChronicles4.addComment(new Comment("It's_Me", "wow"));
         starlightChronicles.addSongToAlbum(starlightChronicles1);
         starlightChronicles.addSongToAlbum(starlightChronicles2);
         starlightChronicles.addSongToAlbum(starlightChronicles3);
         starlightChronicles.addSongToAlbum(starlightChronicles4);
         EchoSeraph.newAlbum(starlightChronicles);
-        EchoSeraph.newSong(starlightChronicles1);
-        EchoSeraph.newSong(starlightChronicles2);
-        EchoSeraph.newSong(starlightChronicles3);
-        EchoSeraph.newSong(starlightChronicles4);
 
         Artist CairoNova = new Artist("Cairo Nova", "Cairo_Nova", "caironova@gmail.com", "cairo2011", 21);
+        Account.allAccounts.add(CairoNova);
+        Artist.addArtistToArtists(CairoNova);
         CairoNova.setInfo("Caitlyn Grace Nova\n" +
                 "Known professionally as Cairo Nova");
-        Artist.addArtistToArtists(CairoNova);
         Album theGardenOfBrokenTime = new Album("The Garden of Broken Time", "July 1, 2011", CairoNova);
         Song theGardenOfBrokenTime1 = new Song("Clockwork Flowers", "July 1, 2011", CairoNova, null, "The Garden of Broken Time", "[enter lyric here]" , "Alternative");
         Song theGardenOfBrokenTime2 = new Song("Rust in the Roots", "July 1, 2011", CairoNova, null, "The Jungle Giants", "[enter lyric here]", "Alternative");
@@ -103,15 +104,12 @@ public class Main extends Application {
         theGardenOfBrokenTime.addSongToAlbum(theGardenOfBrokenTime3);
         theGardenOfBrokenTime.addSongToAlbum(theGardenOfBrokenTime4);
         CairoNova.newAlbum(theGardenOfBrokenTime);
-        CairoNova.newSong(theGardenOfBrokenTime1);
-        CairoNova.newSong(theGardenOfBrokenTime2);
-        CairoNova.newSong(theGardenOfBrokenTime3);
-        CairoNova.newSong(theGardenOfBrokenTime4);
 
         Artist NeonDrifters = new Artist("Neon Drifters", "Neon_Drifters", "neondrifters@gmail.com", "drifters2019", 35);
+        Account.allAccounts.add(NeonDrifters);
+        Artist.addArtistToArtists(NeonDrifters);
         NeonDrifters.setInfo("American alternative band formed\n" +
                 "in New York City in 2011");
-        Artist.addArtistToArtists(NeonDrifters);
         Album fracturedReality = new Album("Fractured Reality", "April 27, 2022", NeonDrifters);
         Song fracturedReality1 = new Song("Mirrors", "April 27, 2022", NeonDrifters, null, "The Funhouse", "[enter lyric here]", "Alternative");
         Song fracturedReality2 = new Song("Through the Glass", "April 27, 2022", NeonDrifters, null, "The Funhouse", "[enter lyric here]", "Alternative");
@@ -122,19 +120,13 @@ public class Main extends Application {
         fracturedReality.addSongToAlbum(fracturedReality3);
         fracturedReality.addSongToAlbum(fracturedReality4);
         NeonDrifters.newAlbum(fracturedReality);
-        NeonDrifters.newSong(fracturedReality1);
-        NeonDrifters.newSong(fracturedReality2);
-        NeonDrifters.newSong(fracturedReality3);
-        NeonDrifters.newSong(fracturedReality4);
 
         Artist GlassChapel = new Artist("Glass Chapel", "Glass_Chapel", "glasschapel@gmail.com", "chapel2007", 17);
-        GlassChapel.setInfo("French band formed in 2007");
+        Account.allAccounts.add(GlassChapel);
         Artist.addArtistToArtists(GlassChapel);
-        Album plasticWeather = new Album("Plastic Weather - Single", "December 7, 2013", GlassChapel);
-        Song plasticWeather1 = new Song("Plastic Weather", "December 7, 2013", GlassChapel, null, "Plastic Weather - Single", "[enter lyric here]", "Folk");
-        plasticWeather.addSongToAlbum(plasticWeather1);
-        GlassChapel.newAlbum(plasticWeather);
-        GlassChapel.newSong(plasticWeather1);
+        GlassChapel.setInfo("French band formed in 2007");
+        Song plasticWeather = new Song("Plastic Weather Single", "December 7, 2013", GlassChapel, null, null, "[enter lyric here]", "Folk");
+        GlassChapel.newSingle(plasticWeather);
 
         System.out.println("-> initial data is entered");
         launch();
