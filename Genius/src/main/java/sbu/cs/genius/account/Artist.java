@@ -72,4 +72,9 @@ public class Artist extends Account{
     public String toString() {
         return getName();
     }
+
+    @Override
+    public boolean equals(Object object) {
+        return ((Artist) object).getUsername().equals(getUsername());
+    }
 }

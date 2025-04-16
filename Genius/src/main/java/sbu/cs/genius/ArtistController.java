@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,9 +14,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sbu.cs.genius.account.Artist;
+import sbu.cs.genius.account.User;
 import sbu.cs.genius.content.Album;
 import sbu.cs.genius.content.Comment;
 import sbu.cs.genius.content.Song;
@@ -32,11 +35,12 @@ public class ArtistController {
     @FXML
     ListView<String> recordsListView;
 
-    // stores the path of the previous scene
-    private String prePage = "";
+    // to give followArtist and unfollowArtist methods access to the displayed artist
+    private Artist artist;
+    private Button follow = new Button();
 
-    public void setScene(Artist artist, String path) {
-        this.prePage = path;
+    public void setScene(Artist artist) {
+        this.artist = artist;
         artistName.setText(artist.getName());
         artistUsername.setText(artist.getUsername());
         artistAge.setText(String.valueOf(artist.getAge()));
@@ -47,6 +51,32 @@ public class ArtistController {
         anchorPane.getChildren().add(info);
         for (Album album : artist.getAlbumsByArtist()) {
             recordsListView.getItems().add(album.toString());
+        }
+        if (User.getUser() != null) {
+            // create "Follow" button
+            artistName.setAlignment(Pos.CENTER_LEFT);
+            artistUsername.setAlignment(Pos.CENTER_LEFT);
+            // check if artist is already followed
+            boolean isFollowed = false;
+            for (Artist following : User.getUser().getFollowingList()) {
+                if (artist.equals(following)) {
+                    isFollowed = true;
+                    break;
+                }
+            }
+            if (isFollowed) {
+                follow.setText("Unfollow");
+                follow.setTextFill(Color.BLACK);
+                follow.setOnAction(this::unfollowArtist);
+            }
+            else {
+                follow.setText("Follow");
+                follow.setTextFill(Color.BLUE);
+                follow.setOnAction(this::followArtist);
+            }
+            follow.setLayoutX(175);
+            follow.setLayoutY(63);
+            anchorPane.getChildren().add(follow);
         }
         System.out.println("-> artist scene is set");
 
@@ -64,7 +94,7 @@ public class ArtistController {
                     throw new RuntimeException(ex);
                 }
                 AlbumController albumController= loader.getController();
-                albumController.setScene(artist.getAlbumsByArtist().get(index), "/sbu/cs/genius/artist-view.fxml");
+                albumController.setScene(artist.getAlbumsByArtist().get(index));
                 // switch scenes
                 Stage stage = (Stage) recordsListView.getScene().getWindow();
                 Scene scene = new Scene(root);
@@ -75,65 +105,33 @@ public class ArtistController {
             }
         });
     }
-//    public void setScene(Object object) {
-//        if (object instanceof Artist) {
-//            title.setText("Records");
-//            heading.setText(((Artist) object).getName());
-//            subheading.setText(((Artist) object).getUsername());
-//            Label age = new Label("Age");
-//            age.setLayoutX(20);
-//            age.setLayoutY(140);
-//            rightAnchorPane.getChildren().add(age);
-//            Label artistAge = new Label(String.valueOf(((Artist) object).getAge()));
-//            artistAge.setLayoutX(110);
-//            artistAge.setLayoutY(140);
-//            rightAnchorPane.getChildren().add(artistAge);
-//            Label email = new Label("Email");
-//            email.setLayoutX(20);
-//            email.setLayoutY(185);
-//            rightAnchorPane.getChildren().add(email);
-//            Label artistEmail = new Label(((Artist) object).getEmail());
-//            artistEmail.setLayoutX(110);
-//            artistEmail.setLayoutY(185);
-//            rightAnchorPane.getChildren().add(artistEmail);
-//            Label info = new Label("Info");
-//            info.setLayoutX(20);
-//            info.setLayoutY(230);
-//            rightAnchorPane.getChildren().add(info);
-//            Text artistInfo = new Text(((Artist) object).getInfo());
-//            artistInfo.setLayoutX(20);
-//            artistInfo.setLayoutY(265);
-//            rightAnchorPane.getChildren().add(artistInfo);
-//            for (Album album : ((Artist) object).getAlbumsByArtist()) {
-//                listView.getItems().add(album.toString());
-//            }
-//            listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//                @Override
-//                public void handle(MouseEvent mouseEvent) {
-//                    int index = listView.getSelectionModel().getSelectedIndex();
-//                    System.out.println("-> selected " + listView.getSelectionModel().getSelectedItem());
-//                    setAlbumScene(((Artist) object).getAlbumsByArtist().get(index));
-//                }
-//            });
-//        }
-//        else if (object instanceof Album) {
-//            setAlbumScene(object);
-//        }
-//        else {
-//            setSongScene(object);
-//        }
-//    }
+
+    public void followArtist(ActionEvent event) {
+        User.getUser().followArtist(artist);
+        System.out.println("-> " + artist + " is followed");
+        follow.setText("Unfollow");
+        follow.setTextFill(Color.BLACK);
+        follow.setOnAction(this::unfollowArtist);
+    }
+
+    public void unfollowArtist(ActionEvent event) {
+        User.getUser().unfollowArtist(artist);
+        System.out.println("-> " + artist + " is unfollowed");
+        follow.setText("Follow");
+        follow.setTextFill(Color.BLUE);
+        follow.setOnAction(this::followArtist);
+    }
 
     public void back(ActionEvent event) throws IOException {
-        // switch to the previous scene
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(prePage));
+        // switch to browse scene
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sbu/cs/genius/browse-view.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        System.out.println("-> switch to the previous scene");
+        System.out.println("-> switch to browse scene");
     }
 //
 //    private void setAlbumScene(Object object) {
@@ -244,34 +242,5 @@ public class ArtistController {
                 // Y = 40
 //            centerVBox.getChildren().add(getDisplayCommentLayout(comment));
 //        }
-//    }
-//
-//
-//    // load comment layout and return a node
-//    Node getDisplayCommentLayout(Comment comment) {
-//        // load fxml file of comment layout
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sbu/cs/genius/displaycomment-view.fxml"));
-//        try {
-//            Node node = loader.load();
-//            DisplayCommentController controller = loader.getController();
-//            // set comment details
-//            controller.username.setText(comment.getUsername());
-//            controller.date.setText(comment.getDate());
-//            controller.text.setText(comment.getText());
-//            return node;
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-//    public void refresh(ActionEvent event){
-//        // add comments to song scene
-//        for (Comment comment : currentSong.getComments()) {
-//            centerVBox.getChildren().add(getDisplayCommentLayout(comment));
-//        }
-//    }
-//
-//    public void editLyrics(ActionEvent event) {
-//
 //    }
 }

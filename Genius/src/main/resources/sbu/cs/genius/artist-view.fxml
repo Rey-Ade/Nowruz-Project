@@ -9,12 +9,12 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.cs.genius.ArtistController">
    <children>
-      <Label fx:id="artistName" alignment="CENTER" layoutY="51.0" prefHeight="27.0" prefWidth="250.0" text="Name">
+      <Label fx:id="artistName" alignment="CENTER" layoutX="40.0" layoutY="51.0" prefHeight="27.0" prefWidth="210.0" text="Name">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="artistUsername" alignment="CENTER" layoutY="83.0" opacity="0.5" prefHeight="20.0" prefWidth="250.0" text="Username">
+      <Label fx:id="artistUsername" alignment="CENTER" layoutX="40.0" layoutY="83.0" opacity="0.5" prefHeight="20.0" prefWidth="210.0" text="Username">
          <font>
             <Font size="14.0" />
          </font>
