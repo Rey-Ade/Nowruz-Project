@@ -20,4 +20,16 @@ public class Comment {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         return dateTime.format(format);
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public String getUsername() {
+        return username;
+    }
 }
