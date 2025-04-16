@@ -1,0 +1,68 @@
+package sbu.cs.genius.content;
+
+import sbu.cs.genius.account.Artist;
+
+import java.util.ArrayList;
+
+public class Album {
+
+    // all the albums in this program are in this ArrayList
+    private static ArrayList<Album> allAlbums = new ArrayList<>();
+
+    private String title;
+    // in the form of ex. November 14, 1995
+    private String releaseDate;
+    private Artist artist;
+    private ArrayList<Song> tracklist = new ArrayList<>();
+
+    public Album(String title, String releaseDate, Artist artist) {
+        this.title = title;
+        this.releaseDate = releaseDate;
+        this.artist = artist;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public ArrayList<Song> getTracklist() {
+        return tracklist;
+    }
+
+    public void addSongToAlbum(Song song) {
+        tracklist.add(song);
+    }
+
+    public static ArrayList<Album> getAllAlbums() {
+        return allAlbums;
+    }
+
+    public static void addAlbumToAllAlbums(Album album) {
+        allAlbums.add(album);
+    }
+
+    @Override
+    public String toString() {
+        return title + "  " + releaseDate;
+    }
+}
