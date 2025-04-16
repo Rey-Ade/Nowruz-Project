@@ -1,6 +1,5 @@
 # Genius
 
-## Overview
 This project replicates the popular website genius.com in java using JavaFX. It's simple and intuitive GUI experience enables users and artists to explore and engage with music content. The project demonstrates basic GUI design, strong OOP principles and event handling.
 
 ## Features
