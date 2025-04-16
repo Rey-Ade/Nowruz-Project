@@ -101,18 +101,21 @@ public class SignUpController implements Initializable {
         if (choiceBox.getValue().compareTo("User") == 0) {
             User.setUser(new User(nameTextField.getText(), usernameTextField.getText(), emailTextField.getText(),
                          passwordTextField.getText(), Integer.parseInt(ageTextField.getText())));
+            Account.account = User.getUser();
             System.out.println("-> User is created");
         }
         // if "Artist" is chosen
         else {
             Artist.setArtist(new Artist(nameTextField.getText(), usernameTextField.getText(), emailTextField.getText(),
                              passwordTextField.getText(), Integer.parseInt(ageTextField.getText())));
+            Account.account = Artist.getArtist();
             System.out.println("-> Artist is created");
             Artist.addArtistToArtists(Artist.getArtist());
             System.out.println("-> Artist is added to Artists arraylist");
         }
-
-        // switch to home view
+        // add account to allAccounts arraylist
+        Account.allAccounts.add(Account.account);
+        // switch to home scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/sbu/cs/genius/home-view.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -120,5 +123,16 @@ public class SignUpController implements Initializable {
         stage.setResizable(false);
         stage.show();
         System.out.println("-> switched to home scene");
+    }
+
+    public void login(ActionEvent event) throws IOException {
+        // switch to login scene
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/sbu/cs/genius/login-view.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+        System.out.println("-> switched to login scene");
     }
 }
