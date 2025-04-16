@@ -31,7 +31,7 @@ public class ProfileController implements Initializable {
     ScrollPane scrollPane;
 
     @FXML
-    Label name, username, age, email, info, oldPass, newPass, oldPassAlert, newPassMessage, newPassAlert;
+    Label name, username, age, email, info, oldPass, newPass, oldPassAlert, newPassMessage, newPassAlert, followingLabel;
 
     @FXML
     TextField oldPassTextField, newPassTextField, nameTextField, usernameTextField, ageTextField, emailTextField;
@@ -43,7 +43,7 @@ public class ProfileController implements Initializable {
     ListView<String> followingListView;
 
     @FXML
-    Button editButton, changePassButton;
+    Button editButton, changePassButton, cancelButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,6 +61,7 @@ public class ProfileController implements Initializable {
             anchorPane.getChildren().add(artistInfo);
         }
         else {
+            followingLabel.setVisible(true);
             scrollPane.setVisible(true);
             for (Artist following : User.getUser().getFollowingList()) {
                 followingListView.getItems().add(following.toString());
@@ -114,6 +115,8 @@ public class ProfileController implements Initializable {
             infoTextArea.setText(Artist.getArtist().getInfo());
         }
         editButton.setText("Submit");
+        editButton.setLayoutX(395);
+        editButton.setLayoutY(25);
         editButton.setOnAction(this::submit);
     }
 
@@ -144,6 +147,8 @@ public class ProfileController implements Initializable {
             Artist.getArtist().setInfo(infoTextArea.getText());
         }
         editButton.setText("Edit");
+        editButton.setPrefWidth(65);
+        editButton.setPrefHeight(30);
         editButton.setOnAction(this::edit);
     }
 
@@ -154,7 +159,10 @@ public class ProfileController implements Initializable {
         newPassTextField.setVisible(true);
         newPassAlert.setVisible(true);
         changePassButton.setText("Reset Password");
+        changePassButton.setPrefWidth(130);
+        changePassButton.setPrefHeight(30);
         changePassButton.setOnAction(this::resetPassword);
+        cancelButton.setVisible(true);
     }
 
     private void resetPassword(ActionEvent event) {
@@ -185,6 +193,21 @@ public class ProfileController implements Initializable {
         newPassTextField.setVisible(false);
         // successfully changed password
         changePassButton.setText("Change Password");
+        changePassButton.setOnAction(this::changePassword);
+    }
+
+    public void cancel(ActionEvent event) {
+        oldPass.setVisible(false);
+        newPass.setVisible(false);
+        oldPassAlert.setVisible(false);
+        newPassAlert.setVisible(false);
+        newPassMessage.setVisible(false);
+        oldPassTextField.setVisible(false);
+        newPassTextField.setVisible(false);
+        cancelButton.setVisible(false);
+        changePassButton.setText("Change Password");
+        changePassButton.setPrefWidth(130);
+        changePassButton.setPrefHeight(30);
         changePassButton.setOnAction(this::changePassword);
     }
 
